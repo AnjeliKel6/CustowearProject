@@ -19,18 +19,9 @@ class Order extends Model
         return $this->hasMany(OrderItem::class, 'order_id');
     }
 
-    public function items()
-    {
-        return $this->hasMany(OrderItem::class);
-    }
-
     public function transaction()
     {
         return $this->hasOne(Transaction::class,'order_id');
     }
 
-    public function trackings()
-    {
-        return $this->hasMany(Tracking::class);
-    }
 }

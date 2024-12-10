@@ -525,22 +525,6 @@ class AdminController extends Controller
         return view('admin.order-details', compact('order', 'orderItems', 'transaction'));
     }
 
-    // public function tracking_show($orderId)
-    // {
-    //     // Pastikan untuk memuat relasi yang diperlukan
-    //     $order = Order::with('items')->findOrFail($orderId);
-    //     $orderItems = $order->items;  // Pastikan 'items' adalah relasi yang ada di model Order
-    //     $transaction = $order->transaction; // Relasi dengan transaksi
-
-    //     // Pastikan bahwa data ditemukan
-    //     if ($orderItems === null) {
-    //         // Misalnya, jika orderItems kosong, Anda bisa mengembalikan view atau pesan error.
-    //         return redirect()->back()->with('error', 'No items found for this order.');
-    //     }
-
-    //     return view('admin.order-tracking', compact('orders', 'orderItems', 'transaction'));
-    // }
-
     public function update_order_status(Request $request)
     {
         $order = Order::find($request->order_id);
