@@ -10,7 +10,6 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SupplierController;
-use App\Http\Controllers\TrackingController;
 use App\Http\Controllers\WishlistController;
 
 Auth::routes();
@@ -106,6 +105,8 @@ Route::middleware(['auth',AuthAdmin::class])->group(function(){
     Route::put('admin/user/update', [AdminController::class, 'users_update'])->name('admin.users.update');
     Route::delete('/admin/user/{id}/delete',[AdminController::class, 'users_delete'])->name('admin.users.delete');
 
+    Route::get('/admin/orders/export-pdf', [AdminController::class, 'eksporPDF'])->name('admin.export-pdf');
+
 });
 
 Route::middleware(['auth',AuthSupplier::class])->group(function(){
@@ -117,15 +118,10 @@ Route::middleware(['auth',AuthSupplier::class])->group(function(){
     Route::put('supplier/material/update', [SupplierController::class, 'materials_update'])->name('supplier.material.update');
     Route::delete('/supplier/material/{id}/delete',[SupplierController::class, 'materials_delete'])->name('supplier.material.delete');
 
-    // Route::get('/supplier/suppliers',[SupplierController::class,  'suppliers'])->name('supplier.suppliers');
-    // Route::get('/supplier/suppliers/add',[SupplierController::class,  'suppliers_add'])->name('supplier.suppliers.add');
-    // Route::post('/supplier/suppliers/store',[SupplierController::class,  'suppliers_store'])->name('supplier.suppliers.store');
-    // Route::get('/supplier/suppliers/{id}/edit',[SupplierController::class,  'suppliers_edit'])->name('supplier.suppliers.edit');
-    // Route::put('/supplier/suppliers/update', [SupplierController::class,  'suppliers_update'])->name('supplier.suppliers.update');
-    // Route::delete('/supplier/suppliers/{id}/delete',[SupplierController::class, 'suppliers_delete'])->name('supplier.suppliers.delete');
+
 });
 
-// Route::get('/tracking/{orderId}', [TrackingController::class, 'show']);
+
 
 
 

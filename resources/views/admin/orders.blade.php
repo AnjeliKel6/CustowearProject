@@ -109,7 +109,7 @@
                         </form>
                     </div>
                     <div class="export-button">
-                        <a href="#" class="btn btn-danger">Ekspor PDF</a>
+                        <a href="{{ route('admin.export-pdf') }}" class="btn btn-danger">Ekspor PDF</a>
                     </div>
                 </div>
                 <div class="wg-table table-all-user">

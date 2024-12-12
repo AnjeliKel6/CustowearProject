@@ -12,11 +12,11 @@ use App\Models\Contact;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Supplier;
-use App\Models\Tracking;
 use App\Models\OrderItem;
 use App\Models\Transaction;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Laravel\Facades\Image;
@@ -542,6 +542,14 @@ class AdminController extends Controller
             $transaction->save();
         }
         return back()->with("status", "Status changed successfully!");
+    }
+
+    //EksporPDF
+    public function eksporPDF()
+    {
+        $orders = Order::all(); // Ganti $order menjadi $orders untuk konsistensi
+        $pdf = Pdf::loadView('admin.ordersPDF', compact('orders')); // Pastikan nama variabel sesuai
+        return $pdf->stream('orders.pdf'); // Stream file PDF di browser
     }
 
     public function slides()
