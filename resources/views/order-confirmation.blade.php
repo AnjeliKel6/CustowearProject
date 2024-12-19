@@ -57,7 +57,7 @@
                 @if($order->transaction)
                     {{ $order->transaction->mode }}
                 @else
-                    Payment method not available
+                    Transfer
                 @endif
             </span>
         </div>

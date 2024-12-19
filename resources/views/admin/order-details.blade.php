@@ -166,7 +166,7 @@
                                 @if ($transaction)
                                     {{ $transaction->mode }}
                                 @else
-                                    <span class="text-danger">No transaction found</span>
+                                    <span>Transfer</span>
                                 @endif
                             </td>
                             <th>Status</th>
@@ -182,7 +182,7 @@
                                         <span class="badge bg-warning">Pending</span>
                                     @endif
                                 @else
-                                    <span class="text-danger">No transaction found</span>
+                                    <span>Transfer</span>
                                 @endif
                             </td>
                         </tr>

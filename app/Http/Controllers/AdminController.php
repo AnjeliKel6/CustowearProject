@@ -527,22 +527,33 @@ class AdminController extends Controller
 
     public function update_order_status(Request $request)
     {
+        // Cari order berdasarkan order_id
         $order = Order::find($request->order_id);
+        if (!$order) {
+            return back()->withErrors("Order not found.");
+        }
+
+        // Update status order
         $order->status = $request->order_status;
         if ($request->order_status == 'delivered') {
             $order->delivered_date = Carbon::now();
-        } else if ($request->order_status == 'canceled') {
+        } elseif ($request->order_status == 'canceled') {
             $order->canceled_date = Carbon::now();
         }
         $order->save();
 
+        // Update status transaksi jika order sudah delivered
         if ($request->order_status == 'delivered') {
             $transaction = Transaction::where('order_id', $request->order_id)->first();
-            $transaction->status = 'approved';
-            $transaction->save();
+            if ($transaction) {
+                $transaction->status = 'approved';
+                $transaction->save();
+            }
         }
+
         return back()->with("status", "Status changed successfully!");
     }
+
 
     //EksporPDF
     public function eksporPDF()
