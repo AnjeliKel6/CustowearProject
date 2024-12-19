@@ -146,6 +146,11 @@ class CartController extends Controller
 
     public function place_an_order(Request $request)
     {
+        $request->validate([
+            'mode' => 'required',
+        ]);
+
+
         $user_id = Auth::user()->id;
         $address = Address::where('user_id',$user_id)->where('isdefault',true)->first();
 
@@ -207,9 +212,24 @@ class CartController extends Controller
             $orderItem->save();
         }
 
-        if($request->mode == "card")
-        {
-            //
+        if ($request->mode == "transfer") {
+            $request->validate([
+                'bank' => 'required',
+                'payment_proof' => 'required|file|mimes:jpeg,jpg,png,pdf|max:10240', // Optional file validation
+            ]);
+
+            // Handle file upload
+            $paymentProof = $request->file('payment_proof');
+            $paymentProofPath = $paymentProof->store('payment_proofs', 'public'); // Store the file in the 'payment_proofs' folder
+
+            $transaction = new Transaction();
+            $transaction->user_id = $user_id;
+            $transaction->order_id = $order->id;
+            $transaction->mode = $request->input('mode');
+            $transaction->bank = $request->bank;
+            $transaction->payment_proof = $paymentProofPath; // Store the file path
+            $transaction->status = "pending";
+            $transaction->save();
         }
         elseif($request->mode == "paypal")
         {

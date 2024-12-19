@@ -52,9 +52,16 @@
             <span>Rp{{$order->total}}</span>
           </div>
           <div class="order-info__item">
-            <label>Paymetn Method</label>
-            <span>{{$order->transaction->mode}}</span>
-          </div>
+            <label>Payment Method</label>
+            <span>
+                @if($order->transaction)
+                    {{ $order->transaction->mode }}
+                @else
+                    Payment method not available
+                @endif
+            </span>
+        </div>
+
         </div>
         <div class="checkout__totals-wrapper">
           <div class="checkout__totals">

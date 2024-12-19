@@ -263,19 +263,30 @@
                                     <th>Total</th>
                                     <td>Rp{{ $order->total }}</td>
                                     <th>Payment Mode</th>
-                                    <td>{{ $transaction->mode }}</td>
-                                    <th>Status</th>
                                     <td>
-                                        @if ($transaction->status == 'approved')
-                                            <span class="badge bg-success">Approved</span>
-                                        @elseif($transaction->status == 'declinded')
-                                            <span class="badge bg-danger">Declinded</span>
-                                        @elseif($transaction->status == 'refunded')
-                                            <span class="badge bg-secondary">Refunded</span>
+                                        @if ($transaction)
+                                            {{ $transaction->mode }}
                                         @else
-                                            <span class="badge bg-warning">Pending</span>
+                                            <span class="text-danger">No transaction found</span>
                                         @endif
                                     </td>
+                                    <th>Status</th>
+                                    <td>
+                                        @if ($transaction)
+                                            @if ($transaction->status == 'approved')
+                                                <span class="badge bg-success">Approved</span>
+                                            @elseif($transaction->status == 'declined')
+                                                <span class="badge bg-danger">Declined</span>
+                                            @elseif($transaction->status == 'refunded')
+                                                <span class="badge bg-secondary">Refunded</span>
+                                            @else
+                                                <span class="badge bg-warning">Pending</span>
+                                            @endif
+                                        @else
+                                            <span class="text-danger">No transaction found</span>
+                                        @endif
+                                    </td>
+
                                 </tr>
                             </tbody>
                         </table>
