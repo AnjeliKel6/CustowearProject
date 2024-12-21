@@ -26,7 +26,7 @@
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center gap14">
                                     <div class="image ic-bg">
-                                        <i class="icon-dollar-sign"></i>
+                                        <i class="icon-pocket"></i>
                                     </div>
                                     <div>
                                         <div class="body-text mb-2">Total Amount</div>
@@ -56,7 +56,7 @@
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center gap14">
                                     <div class="image ic-bg">
-                                        <i class="icon-dollar-sign"></i>
+                                        <i class="icon-pocket"></i>
                                     </div>
                                     <div>
                                         <div class="body-text mb-2">Pending Orders Amount</div>
@@ -89,7 +89,7 @@
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center gap14">
                                     <div class="image ic-bg">
-                                        <i class="icon-dollar-sign"></i>
+                                        <i class="icon-pocket"></i>
                                     </div>
                                     <div>
                                         <div class="body-text mb-2">Delivered Orders Amount</div>
@@ -119,7 +119,7 @@
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center gap14">
                                     <div class="image ic-bg">
-                                        <i class="icon-dollar-sign"></i>
+                                        <i class="icon-pocket"></i>
                                     </div>
                                     <div>
                                         <div class="body-text mb-2">Canceled Orders Amount</div>
@@ -149,7 +149,7 @@
                                 <h4>Rp.{{$TotalAmount}}</h4>
                             </div>
                         </div>
-                        <div>
+                        {{--  <div>
                             <div class="mb-2">
                                 <div class="block-legend">
                                     <div class="dot t2"></div>
@@ -159,8 +159,8 @@
                             <div class="flex items-center gap10">
                                 <h4>Rp.{{$TotalOrderedAmount}}</h4>
                             </div>
-                        </div>
-                        <div>
+                        </div>  --}}
+                        {{--  <div>
                             <div class="mb-2">
                                 <div class="block-legend">
                                     <div class="dot t2"></div>
@@ -170,8 +170,8 @@
                             <div class="flex items-center gap10">
                                 <h4>Rp.{{$TotalDeliveredAmount}}</h4>
                             </div>
-                        </div>
-                        <div>
+                        </div>  --}}
+                        {{--  <div>
                             <div class="mb-2">
                                 <div class="block-legend">
                                     <div class="dot t2"></div>
@@ -181,7 +181,7 @@
                             <div class="flex items-center gap10">
                                 <h4>Rp.{{$TotalCanceledAmount}}</h4>
                             </div>
-                        </div>
+                        </div>  --}}
                     </div>
                     <div id="line-chart-8"></div>
                 </div>
@@ -223,9 +223,9 @@
                                             <td class="text-center">{{ $order->id }}</td>
                                             <td class="text-center">{{ $order->name }}</td>
                                             <td class="text-center">{{ $order->phone }}</td>
-                                            <td class="text-center">Rp{{ $order->subtotal }}</td>
-                                            <td class="text-center">Rp{{ $order->tax }}</td>
-                                            <td class="text-center">Rp{{ $order->total }}</td>
+                                            <td class="text-center">Rp.{{ $order->subtotal }}</td>
+                                            <td class="text-center">Rp.{{ $order->tax }}</td>
+                                            <td class="text-center">Rp.{{ $order->total }}</td>
                                             <td class="text-center">
                                                 @if ($order->status == 'delivered')
                                                     <span class="badge bg-success">Delivered</span>
@@ -265,25 +265,12 @@
 
 <script>
     (function ($) {
-
         var tfLineChart = (function () {
-
             var chartBar = function () {
-
                 var options = {
                     series: [{
                         name: 'Total',
                         data: [{{$AmountM}}]
-                    }, {
-                        name: 'Pending',
-                        data: [{{$OrderedAmountM}}]
-                    },
-                    {
-                        name: 'Delivered',
-                        data: [{{$DeliveredAmountM}}]
-                    }, {
-                        name: 'Canceled',
-                        data: [{{$CanceledAmountM}}]
                     }],
                     chart: {
                         type: 'bar',
@@ -295,7 +282,7 @@
                     plotOptions: {
                         bar: {
                             horizontal: false,
-                            columnWidth: '10px',
+                            columnWidth: '50%', /* Ubah ukuran bar di sini */
                             endingShape: 'rounded'
                         },
                     },
@@ -305,7 +292,7 @@
                     legend: {
                         show: false,
                     },
-                    colors: ['#2377FC', '#FFA500', '#078407', '#FF0000'],
+                    colors: ['#2377FC'],
                     stroke: {
                         show: false,
                     },
@@ -344,7 +331,6 @@
             /* Function ============ */
             return {
                 init: function () { },
-
                 load: function () {
                     chartBar();
                 },
@@ -361,4 +347,6 @@
         jQuery(window).on("resize", function () { });
     })(jQuery);
 </script>
+
+
 @endpush

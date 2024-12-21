@@ -1,81 +1,90 @@
 @extends('layouts.admin')
 @section('content')
-<style>
-/* Tombol Ekspor PDF */
-.export-button {
-    text-align: right;
-    margin-bottom: 15px;
-}
+    <style>
+        /* Tombol Ekspor PDF */
+        .export-button {
+            text-align: right;
+            margin-bottom: 15px;
+        }
 
-.export-button .btn-danger {
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 7px;
-}
+        .export-button .btn-danger {
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 7px;
+        }
 
-/* Tabel */
-.wg-table .table {
-    font-size: 15px; /* Ukuran font default untuk tabel */
-    border: 1px solid #ddd;
-}
+        /* Tabel */
+        .wg-table .table {
+            font-size: 15px;
+            /* Ukuran font default untuk tabel */
+            border: 1px solid #ddd;
+        }
 
-.wg-table .table thead th {
-    font-size: 16px; /* Ukuran font header tabel */
-    font-weight: bold;
-    text-align: center;
-    background-color: #f8f9fa; /* Warna latar belakang header */
-}
+        .wg-table .table thead th {
+            font-size: 16px;
+            /* Ukuran font header tabel */
+            font-weight: bold;
+            text-align: center;
+            background-color: #f8f9fa;
+            /* Warna latar belakang header */
+        }
 
-.wg-table .table tbody td {
-    font-size: 15px; /* Ukuran font isi tabel */
-    text-align: center;
-    vertical-align: middle;
-}
+        .wg-table .table tbody td {
+            font-size: 15px;
+            /* Ukuran font isi tabel */
+            text-align: center;
+            vertical-align: middle;
+        }
 
-.wg-table .table tbody tr:hover {
-    background-color: #f1f1f1; /* Warna latar belakang saat di-hover */
-}
+        .wg-table .table tbody tr:hover {
+            background-color: #f1f1f1;
+            /* Warna latar belakang saat di-hover */
+        }
 
-/* Badge Status */
-.badge {
-    font-size: 14px;
-    padding: 5px 10px;
-    border-radius: 5px;
-    display: inline-block;
-}
+        .table-striped th:nth-child(2),
+        .table-striped td:nth-child(2) {
+            width: 250px;
+            padding-bottom: 5px;
+        }
 
-.badge.bg-success {
-    background-color: #28a745;
-    color: white;
-}
+        /* Badge Status */
+        .badge {
+            font-size: 14px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
 
-.badge.bg-danger {
-    background-color: #dc3545;
-    color: white;
-}
+        .badge.bg-success {
+            background-color: #28a745;
+            color: white;
+        }
 
-.badge.bg-warning {
-    background-color: #ffc107;
-    color: black;
-}
+        .badge.bg-danger {
+            background-color: #dc3545;
+            color: white;
+        }
 
-/* Responsiveness */
-.table-responsive {
-    overflow-x: auto;
-}
+        .badge.bg-warning {
+            background-color: #ffc107;
+            color: black;
+        }
 
-@media (max-width: 768px) {
-    .export-button {
-        text-align: center;
-    }
+        /* Responsiveness */
+        .table-responsive {
+            overflow-x: auto;
+        }
 
-    .export-button .btn-danger {
-        width: 100%;
-    }
-}
+        @media (max-width: 768px) {
+            .export-button {
+                text-align: center;
+            }
 
-
-</style>
+            .export-button .btn-danger {
+                width: 100%;
+            }
+        }
+    </style>
     <div class="main-content-inner">
         <div class="main-content-wrap">
             <div class="flex items-center flex-wrap justify-between gap20 mb-27">

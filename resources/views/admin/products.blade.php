@@ -1,5 +1,82 @@
 @extends('layouts.admin')
 @section('content')
+
+<style>
+    /* Tombol Ekspor PDF */
+    .export-button {
+        text-align: right;
+        margin-bottom: 15px;
+    }
+
+    .export-button .btn-danger {
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 7px;
+    }
+
+    /* Tabel */
+    .wg-table .table {
+        font-size: 15px; /* Ukuran font default untuk tabel */
+        border: 1px solid #ddd;
+    }
+
+    .wg-table .table thead th {
+        font-size: 16px; /* Ukuran font header tabel */
+        font-weight: bold;
+        text-align: center;
+        background-color: #f8f9fa; /* Warna latar belakang header */
+    }
+
+    .wg-table .table tbody td {
+        font-size: 15px; /* Ukuran font isi tabel */
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .wg-table .table tbody tr:hover {
+        background-color: #f1f1f1; /* Warna latar belakang saat di-hover */
+    }
+
+
+    /* Badge Status */
+    .badge {
+        font-size: 14px;
+        padding: 5px 10px;
+        border-radius: 5px;
+        display: inline-block;
+    }
+
+    .badge.bg-success {
+        background-color: #28a745;
+        color: white;
+    }
+
+    .badge.bg-danger {
+        background-color: #dc3545;
+        color: white;
+    }
+
+    .badge.bg-warning {
+        background-color: #ffc107;
+        color: black;
+    }
+
+    /* Responsiveness */
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    @media (max-width: 768px) {
+        .export-button {
+            text-align: center;
+        }
+
+        .export-button .btn-danger {
+            width: 100%;
+        }
+    }
+</style>
+
 <div class="main-content-inner">
     <div class="main-content-wrap">
         <div class="flex items-center flex-wrap justify-between gap20 mb-27">
@@ -68,8 +145,8 @@
                                     <div class="text-tiny mt-3">{{ $product->slug }}</div>
                                 </div>
                             </td>
-                            <td>Rp{{ number_format($product->regular_price, 2) }}</td>
-                            <td>Rp{{ number_format($product->sale_price, 2) }}</td>
+                            <td>Rp.{{ number_format($product->regular_price, 2) }}</td>
+                            <td>Rp.{{ number_format($product->sale_price, 2) }}</td>
                             <td>{{ $product->SKU }}</td>
                             <td>{{ $product->category->name }}</td>
                             <td>{{ $product->brand->name }}</td>

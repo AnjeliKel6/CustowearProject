@@ -723,29 +723,23 @@ class AdminController extends Controller
 
     public function users_edit($id)
     {
-        $users = User::find($id);
+        $users = User::findOrFail($id); // Tambahkan fail-safe jika ID tidak ditemukan
         return view('admin.users-edit', compact('users'));
     }
 
     public function users_update(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'utype' => 'required|in:USR,ADM,VND', // Utype harus salah satu dari USR, ADM, atau VND
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:8',
-            'mobile' => 'required|numeric|digits_between:10,15'
+            'password' => 'required|confirmed|min:8', // Konfirmasi password
         ]);
 
-        $users = User::find($request->id);
-        $users->name = $request->name;
-        $users->utype = $request->utype;
-        $users->email = $request->email;
-        $users->password = bcrypt($request->password);
-        $users->mobile = $request->mobile;
+        $users = User::findOrFail($request->id); // Tambahkan validasi ID pengguna
+        $users->password = bcrypt($request->password); // Hash password baru
         $users->save();
-        return redirect()->route('admin.users')->with('status', 'User has been updated successfully!');
+
+        return redirect()->route('admin.users')->with('status', 'User password has been reset successfully!');
     }
+
 
     public function users_delete($id)
     {
