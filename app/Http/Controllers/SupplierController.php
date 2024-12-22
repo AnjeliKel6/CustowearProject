@@ -79,6 +79,7 @@ class SupplierController extends Controller
         $materials = Material::find($request->id);
         $materials->name = $request->name;
         $materials->description = $request->description;
+        $materials->quantity = $request->quantity;
         if ($request->hasFile('image')) {
             if (File::exists(public_path('uploads/materials') . '/' . $materials->image)) {
                 File::delete(public_path('uploads/materials') . '/' . $materials->image);

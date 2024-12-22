@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.supplier')
 @section('content')
     <style>
         .table-striped th:nth-child(2), .table-striped td:nth-child(2) {
@@ -119,11 +119,11 @@
                                     <td>{{ $material->quantity }}</td>
                                     <td>
                                         <div class="list-icon-function">
-                                            <a href="#" target="_blank">
+                                            {{--  <a href="#" target="_blank">
                                                 <div class="item eye">
                                                     <i class="icon-eye"></i>
                                                 </div>
-                                            </a>
+                                            </a>  --}}
                                             <a href="{{ route('supplier.material.edit', ['id' => $material->id]) }}">
                                                 <div class="item edit">
                                                     <i class="icon-edit-3"></i>
