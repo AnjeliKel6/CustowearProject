@@ -29,7 +29,7 @@ class HomeController extends Controller
         $request->validate([
             'name' => 'required|max:100',
             'email' => 'required|email',
-            'phone' => 'required|numeric|digits:10',
+            'phone' => 'required|numeric|digits:12',
             'comment' => 'required',
             'attachment' => 'nullable|file|mimes:jpeg,png,jpg,pdf|max:2048'
         ]);

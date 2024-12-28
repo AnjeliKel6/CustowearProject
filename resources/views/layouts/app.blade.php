@@ -354,9 +354,6 @@
                             <a href="{{ route('cart.index') }}" class="navigation__link">Cart</a>
                         </li>
                         <li class="navigation__item">
-                            <a href="about.html" class="navigation__link">About</a>
-                        </li>
-                        <li class="navigation__item">
                             <a href="contact.html" class="navigation__link">Contact</a>
                         </li>
                     </ul>
@@ -442,9 +439,6 @@
                         </li>
                         <li class="navigation__item">
                             <a href="{{ route('cart.index') }}" class="navigation__link">Cart</a>
-                        </li>
-                        <li class="navigation__item">
-                            <a href="about.html" class="navigation__link">About</a>
                         </li>
                         <li class="navigation__item">
                             <a href="{{ route('home.contact') }}" class="navigation__link">Contact</a>
@@ -555,7 +549,7 @@
                                 class="logo__image d-block" />
                         </a>
                     </div>
-                    <p class="m-0"><strong class="fw-medium">contact@custowear.id</strong></p>
+                    <p class="m-0"><strong class="fw-medium">explain@custowear.id</strong></p>
                     <p><strong class="fw-medium">+62-8886-0001-111</strong></p>
 
                     <ul class="social-links list-unstyled d-flex flex-wrap mb-0">
