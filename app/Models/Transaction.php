@@ -13,8 +13,8 @@ class Transaction extends Model
         'order_id',
         'mode',
         'status',
+        'bank',
         'payment_proof',
-        'bank'
     ];
     public function order()
     {

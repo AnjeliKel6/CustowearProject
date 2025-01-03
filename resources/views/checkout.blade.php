@@ -219,13 +219,14 @@
                                 @endif
                             </div>
                             <div class="checkout__payment-methods">
+                                <!-- Metode Transfer Bank -->
                                 <div class="form-check">
                                     <input class="form-check-input form-check-input_fill" type="radio" name="mode"
-                                        id="mode1" value="bank_transfer" required>
+                                        id="mode1" value="transfer" required>
                                     <label class="form-check-label" for="mode1">Transfer Bank</label>
                                 </div>
 
-                                <!-- Pilihan Bank dan Upload Bukti Pembayaran (Hanya Muncul untuk Transfer Bank) -->
+                                <!-- Detail Transfer Bank -->
                                 <div id="bank-details" style="display:none;">
                                     <div class="form-group my-3">
                                         <label for="bank">Choose Bank</label>
@@ -236,11 +237,12 @@
                                         </select>
                                     </div>
 
-                                    <!-- Menampilkan contoh rekening sesuai bank yang dipilih -->
+                                    <!-- Menampilkan contoh rekening -->
                                     <div id="bank-rek" style="display:none;">
                                         <p id="bank-rek-text"></p>
                                     </div>
 
+                                    <!-- Upload Bukti Pembayaran -->
                                     <div class="form-group my-3">
                                         <label for="payment_proof">Upload Payment Proof</label>
                                         <input type="file" class="form-control" name="payment_proof"
@@ -248,24 +250,21 @@
                                     </div>
                                 </div>
 
+                                <!-- Metode COD -->
                                 <div class="form-check">
                                     <input class="form-check-input form-check-input_fill" type="radio" name="mode"
-                                        id="mode2" value="paypal" required>
-                                    <label class="form-check-label" for="mode2">Paypal</label>
+                                        id="mode2" value="cod" required>
+                                    <label class="form-check-label" for="mode2">Cash on Delivery</label>
                                 </div>
-                                <div class="form-check">
-                                    <input class="form-check-input form-check-input_fill" type="radio" name="mode"
-                                        id="mode3" value="cod" required>
-                                    <label class="form-check-label" for="mode3">Cash on delivery</label>
-                                </div>
+
                                 <div class="policy-text">
                                     Your personal data will be used to process your order, support your experience
-                                    throughout this
-                                    website, and for other purposes described in our <a href="terms.html"
-                                        target="_blank">privacy
+                                    throughout this website,
+                                    and for other purposes described in our <a href="terms.html" target="_blank">privacy
                                         policy</a>.
                                 </div>
                             </div>
+
                             <button class="btn btn-primary btn-checkout">PLACE ORDER</button>
                         </div>
                     </div>
@@ -278,7 +277,7 @@
         // Menampilkan detail pembayaran bank saat memilih transfer bank
         document.querySelectorAll('input[name="mode"]').forEach(function(elem) {
             elem.addEventListener('change', function() {
-                if (this.value === 'bank_transfer') {
+                if (this.value === 'transfer') {
                     document.getElementById('bank-details').style.display = 'block';
                 } else {
                     document.getElementById('bank-details').style.display = 'none';
@@ -303,6 +302,6 @@
             document.getElementById('bank-rek-text').innerText = bankRekText;
             document.getElementById('bank-rek').style.display = 'block';
         });
-
     </script>
+
 @endsection
